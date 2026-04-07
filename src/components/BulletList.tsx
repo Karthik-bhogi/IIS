@@ -1,11 +1,38 @@
 /**
- * Renders text with lines starting with "- ", "* ", or "• " as a bullet list.
- * Other lines render as paragraphs.
+ * Renders text as a bullet list.
+ * Lines starting with "- ", "* ", or "• " are treated as bullets.
+ * If multiple lines exist but none have bullet prefixes, each line becomes a bullet.
+ * Single-line text without a bullet prefix renders as a paragraph.
  */
 export default function BulletList({ text, className }: { text: string; className?: string }) {
   if (!text) return null
 
   const lines = text.split('\n').filter((l) => l.trim())
+
+  if (lines.length === 0) return null
+
+  // Check if any lines have bullet prefixes
+  const hasBulletPrefixes = lines.some((l) => /^[-•*]\s/.test(l.trim()))
+
+  // If multiple lines and none have prefixes, treat all as bullets
+  if (lines.length > 1 && !hasBulletPrefixes) {
+    return (
+      <div className={className}>
+        <ul className="list-disc list-inside space-y-1">
+          {lines.map((line, i) => (
+            <li key={i}>{line.trim()}</li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  // Single line without prefix — render as paragraph
+  if (lines.length === 1 && !hasBulletPrefixes) {
+    return <div className={className}><p>{lines[0].trim()}</p></div>
+  }
+
+  // Mixed or all-bullet content
   const bullets: string[] = []
   const result: React.ReactNode[] = []
 
