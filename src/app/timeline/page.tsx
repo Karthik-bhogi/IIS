@@ -58,11 +58,14 @@ export default async function TimelinePage() {
       Array.isArray(entry.work_logs) && entry.work_logs.length > 0
         ? (entry.work_logs[0] as { text?: string }).text
         : 'Daily Entry'
+    // Extract first bullet as the title, stripping the "- " prefix
+    const firstLine = (mainLog || 'Daily Entry').split('\n').find((l: string) => l.trim()) || 'Daily Entry'
+    const cleanTitle = firstLine.trim().replace(/^[-•*]\s+/, '')
     timelineEvents.push({
       id: entry.id,
       type: 'entry',
       timestamp: entry.date + 'T00:00:00.000Z',
-      title: mainLog || 'Daily Entry',
+      title: cleanTitle,
       description: entry.impact || 'Work entry logged',
       documentCount: Array.isArray(entry.documents) ? entry.documents.length : 0,
     })

@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { Calendar, ArrowLeft, Pencil, Download, Users, Lightbulb, UserCheck, Mic, FileOutput, Trash2 } from 'lucide-react'
+import BulletList from '@/components/BulletList'
 import { deleteMeeting } from '../actions'
 
 export const dynamic = 'force-dynamic'
@@ -81,9 +82,7 @@ export default async function MeetingDetailPage(
                       <h2 className="text-lg font-semibold text-slate-800 mb-3 flex items-center">
                         <Users className="w-5 h-5 mr-2 text-slate-400" /> Summary Notes
                       </h2>
-                      <div className="p-4 bg-slate-50 rounded-xl text-slate-700 whitespace-pre-wrap leading-relaxed shadow-inner">
-                        {meeting.notes}
-                      </div>
+                      <BulletList text={meeting.notes} className="p-4 bg-slate-50 rounded-xl text-slate-700 leading-relaxed shadow-inner space-y-2" />
                     </section>
                   )}
                   {meeting.transcript && (
@@ -104,16 +103,14 @@ export default async function MeetingDetailPage(
                   <h2 className="text-lg font-semibold text-slate-800 mb-3 flex items-center">
                     <Lightbulb className="w-5 h-5 mr-2 text-amber-500" /> Key Decisions
                   </h2>
-                  <p className="text-slate-700 leading-relaxed pl-7 border-l-2 border-amber-200">{meeting.decisions}</p>
+                  <BulletList text={meeting.decisions} className="text-slate-700 leading-relaxed pl-7 border-l-2 border-amber-200 space-y-1" />
                 </section>
               )}
 
               {meeting.action_items && (
                 <section>
                   <h2 className="text-lg font-semibold text-slate-800 mb-3">Action Items</h2>
-                  <div className="bg-slate-50 rounded-xl p-4 border border-slate-100">
-                     <p className="text-slate-700 leading-relaxed whitespace-pre-wrap">{meeting.action_items}</p>
-                  </div>
+                  <BulletList text={meeting.action_items} className="bg-slate-50 rounded-xl p-4 border border-slate-100 text-slate-700 leading-relaxed space-y-1" />
                 </section>
               )}
 
@@ -122,7 +119,7 @@ export default async function MeetingDetailPage(
                   <h2 className="text-lg font-semibold text-slate-800 mb-3 flex items-center">
                     <UserCheck className="w-5 h-5 mr-2 text-green-500" /> My Contribution
                   </h2>
-                  <p className="text-slate-700 leading-relaxed">{meeting.contribution}</p>
+                  <BulletList text={meeting.contribution} className="text-slate-700 leading-relaxed space-y-1" />
                 </section>
               )}
 

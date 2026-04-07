@@ -4,6 +4,7 @@ import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import { createMeeting } from '../actions'
 import VoiceRecorder from '@/components/VoiceRecorder'
+import BulletTextarea from '@/components/BulletTextarea'
 
 export default async function NewMeetingPage(props: { searchParams: Promise<{ error?: string }> }) {
   const searchParams = await props.searchParams
@@ -75,7 +76,7 @@ export default async function NewMeetingPage(props: { searchParams: Promise<{ er
                   <label className="block text-sm font-semibold text-slate-700" htmlFor="notes">Context / General Notes</label>
                   <VoiceRecorder targetInputId="notes" />
                 </div>
-                <textarea
+                <BulletTextarea
                   name="notes"
                   id="notes"
                   placeholder="The objective was to align on..."
@@ -90,7 +91,7 @@ export default async function NewMeetingPage(props: { searchParams: Promise<{ er
                   <VoiceRecorder targetInputId="contribution" />
                 </div>
                 <p className="text-xs text-slate-500 mb-2">What did you say, present, or drive forward in this meeting?</p>
-                <textarea
+                <BulletTextarea
                   name="contribution"
                   id="contribution"
                   placeholder="Presented the findings from my analysis which led to..."
@@ -105,10 +106,10 @@ export default async function NewMeetingPage(props: { searchParams: Promise<{ er
                     <label className="block text-sm font-semibold text-slate-700" htmlFor="decisions">Key Decisions Made</label>
                     <VoiceRecorder targetInputId="decisions" />
                   </div>
-                  <textarea
+                  <BulletTextarea
                     name="decisions"
                     id="decisions"
-                    placeholder="1. We will proceed with option A..."
+                    placeholder="- We will proceed with option A..."
                     rows={4}
                     className="w-full rounded-lg border-slate-200 bg-slate-50 px-4 py-3 border focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-y"
                   />
@@ -118,10 +119,10 @@ export default async function NewMeetingPage(props: { searchParams: Promise<{ er
                     <label className="block text-sm font-semibold text-slate-700" htmlFor="actionItems">Action Items</label>
                     <VoiceRecorder targetInputId="actionItems" />
                   </div>
-                  <textarea
+                  <BulletTextarea
                     name="actionItems"
                     id="actionItems"
-                    placeholder="Follow up with engineering about..."
+                    placeholder="- Follow up with engineering about..."
                     rows={4}
                     className="w-full rounded-lg border-slate-200 bg-slate-50 px-4 py-3 border focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-y"
                   />

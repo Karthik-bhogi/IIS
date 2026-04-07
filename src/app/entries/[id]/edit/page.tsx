@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { updateEntry } from '../../actions'
 import VoiceRecorder from '@/components/VoiceRecorder'
+import BulletTextarea from '@/components/BulletTextarea'
 
 export const dynamic = 'force-dynamic'
 
@@ -75,7 +76,7 @@ export default async function EditEntryPage(
                   <label className="block text-sm font-semibold text-slate-700" htmlFor="worklog">Activities / Work Done</label>
                   <VoiceRecorder targetInputId="worklog" />
                 </div>
-                <textarea
+                <BulletTextarea
                   name="worklog"
                   id="worklog"
                   defaultValue={mainLog}
@@ -90,7 +91,7 @@ export default async function EditEntryPage(
                   <label className="block text-sm font-semibold text-slate-700" htmlFor="impact">Impact Generated</label>
                   <VoiceRecorder targetInputId="impact" />
                 </div>
-                <textarea
+                <BulletTextarea
                   name="impact"
                   id="impact"
                   defaultValue={entry.impact}
@@ -105,7 +106,7 @@ export default async function EditEntryPage(
                     <label className="block text-sm font-semibold text-slate-700" htmlFor="challenges">Challenges</label>
                     <VoiceRecorder targetInputId="challenges" />
                   </div>
-                  <textarea
+                  <BulletTextarea
                     name="challenges"
                     id="challenges"
                     defaultValue={entry.challenges}
@@ -119,7 +120,7 @@ export default async function EditEntryPage(
                     <label className="block text-sm font-semibold text-slate-700" htmlFor="learnings">Key Learnings</label>
                     <VoiceRecorder targetInputId="learnings" />
                   </div>
-                  <textarea
+                  <BulletTextarea
                     name="learnings"
                     id="learnings"
                     defaultValue={entry.learnings}

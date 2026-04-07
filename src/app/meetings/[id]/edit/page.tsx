@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { updateMeeting } from '../../actions'
 import VoiceRecorder from '@/components/VoiceRecorder'
+import BulletTextarea from '@/components/BulletTextarea'
 
 export const dynamic = 'force-dynamic'
 
@@ -89,7 +90,7 @@ export default async function EditMeetingPage(
                   <label className="block text-sm font-semibold text-slate-700" htmlFor="notes">Context / Summary Notes</label>
                   <VoiceRecorder targetInputId="notes" />
                 </div>
-                <textarea
+                <BulletTextarea
                   name="notes"
                   id="notes"
                   defaultValue={meeting.notes}
@@ -117,7 +118,7 @@ export default async function EditMeetingPage(
                   <label className="block text-sm font-semibold text-slate-700" htmlFor="contribution">My Contribution</label>
                   <VoiceRecorder targetInputId="contribution" />
                 </div>
-                <textarea
+                <BulletTextarea
                   name="contribution"
                   id="contribution"
                   defaultValue={meeting.contribution}
@@ -132,7 +133,7 @@ export default async function EditMeetingPage(
                     <label className="block text-sm font-semibold text-slate-700" htmlFor="decisions">Key Decisions</label>
                     <VoiceRecorder targetInputId="decisions" />
                   </div>
-                  <textarea
+                  <BulletTextarea
                     name="decisions"
                     id="decisions"
                     defaultValue={meeting.decisions}
@@ -146,7 +147,7 @@ export default async function EditMeetingPage(
                     <label className="block text-sm font-semibold text-slate-700" htmlFor="actionItems">Action Items</label>
                     <VoiceRecorder targetInputId="actionItems" />
                   </div>
-                  <textarea
+                  <BulletTextarea
                     name="actionItems"
                     id="actionItems"
                     defaultValue={meeting.action_items}

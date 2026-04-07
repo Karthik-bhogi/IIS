@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { FileText, ArrowLeft, Pencil, Download, CheckCircle, FileOutput, Trash2 } from 'lucide-react'
+import BulletList from '@/components/BulletList'
 import { deleteEntry } from '../actions'
 
 export const dynamic = 'force-dynamic'
@@ -76,29 +77,27 @@ export default async function EntryDetailPage(
                 <h2 className="text-lg font-semibold text-slate-800 mb-3 flex items-center">
                   <CheckCircle className="w-5 h-5 mr-2 text-slate-400" /> Work Log
                 </h2>
-                <div className="p-4 bg-slate-50 rounded-xl text-slate-700 whitespace-pre-wrap leading-relaxed">
-                  {mainLog}
-                </div>
+                <BulletList text={mainLog} className="p-4 bg-slate-50 rounded-xl text-slate-700 leading-relaxed space-y-2" />
               </section>
 
               {entry.impact && (
                 <section>
                   <h2 className="text-lg font-semibold text-slate-800 mb-3">Impact / Outcomes</h2>
-                  <p className="text-slate-700 leading-relaxed">{entry.impact}</p>
+                  <BulletList text={entry.impact} className="text-slate-700 leading-relaxed space-y-2" />
                 </section>
               )}
 
               {entry.challenges && (
                 <section>
                   <h2 className="text-lg font-semibold text-slate-800 mb-3">Challenges & Roadblocks</h2>
-                  <p className="text-slate-700 leading-relaxed">{entry.challenges}</p>
+                  <BulletList text={entry.challenges} className="text-slate-700 leading-relaxed space-y-2" />
                 </section>
               )}
 
               {entry.learnings && (
                 <section>
                   <h2 className="text-lg font-semibold text-slate-800 mb-3">Key Learnings</h2>
-                  <p className="text-slate-700 leading-relaxed">{entry.learnings}</p>
+                  <BulletList text={entry.learnings} className="text-slate-700 leading-relaxed space-y-2" />
                 </section>
               )}
 

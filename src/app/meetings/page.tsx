@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { PlusCircle, CalendarDays, Clock, CheckCircle2, Pencil, Trash2, Download, FileText } from 'lucide-react'
+import BulletList from '@/components/BulletList'
 import { deleteMeeting } from './actions'
 
 export default async function MeetingsPage() {
@@ -108,16 +109,14 @@ export default async function MeetingsPage() {
                   >
                     <h3 className="text-sm font-bold text-slate-900 leading-tight mb-1.5">{meeting.title}</h3>
                     {meeting.notes && (
-                      <p className="text-sm text-slate-500 line-clamp-2 leading-relaxed">{meeting.notes}</p>
+                      <BulletList text={meeting.notes} className="text-sm text-slate-500 leading-relaxed [&_ul]:max-h-16 [&_ul]:overflow-hidden space-y-1" />
                     )}
                     {meeting.contribution && (
                       <div className="mt-2.5 flex items-start gap-1.5">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded shrink-0 mt-px">
                           My Role
                         </span>
-                        <p className="text-xs text-blue-700 line-clamp-1">
-                          {meeting.contribution}
-                        </p>
+                        <BulletList text={meeting.contribution} className="text-xs text-blue-700 line-clamp-1" />
                       </div>
                     )}
                   </Link>

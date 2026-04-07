@@ -4,6 +4,7 @@ import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import { createEntry } from '../actions'
 import VoiceRecorder from '@/components/VoiceRecorder'
+import BulletTextarea from '@/components/BulletTextarea'
 
 export default async function NewEntryPage(props: { searchParams: Promise<{ error?: string }> }) {
   const searchParams = await props.searchParams
@@ -60,7 +61,7 @@ export default async function NewEntryPage(props: { searchParams: Promise<{ erro
                   <VoiceRecorder targetInputId="worklog" />
                 </div>
                 <p className="text-xs text-slate-500 mb-2">What did you accomplish today? (Bullet points recommended)</p>
-                <textarea
+                <BulletTextarea
                   name="worklog"
                   id="worklog"
                   placeholder="- Analyzed Q3 metrics for..."
@@ -75,7 +76,7 @@ export default async function NewEntryPage(props: { searchParams: Promise<{ erro
                   <VoiceRecorder targetInputId="impact" />
                 </div>
                 <p className="text-xs text-slate-500 mb-2">Think STAR framework: What was the result of your action?</p>
-                <textarea
+                <BulletTextarea
                   name="impact"
                   id="impact"
                   placeholder="The analysis reduced query time by 15%..."
@@ -90,7 +91,7 @@ export default async function NewEntryPage(props: { searchParams: Promise<{ erro
                     <label className="block text-sm font-semibold text-slate-700" htmlFor="challenges">Challenges</label>
                     <VoiceRecorder targetInputId="challenges" />
                   </div>
-                  <textarea
+                  <BulletTextarea
                     name="challenges"
                     id="challenges"
                     placeholder="Blocked on data access..."
@@ -103,7 +104,7 @@ export default async function NewEntryPage(props: { searchParams: Promise<{ erro
                     <label className="block text-sm font-semibold text-slate-700" htmlFor="learnings">Key Learnings</label>
                     <VoiceRecorder targetInputId="learnings" />
                   </div>
-                  <textarea
+                  <BulletTextarea
                     name="learnings"
                     id="learnings"
                     placeholder="Learned how to properly index..."

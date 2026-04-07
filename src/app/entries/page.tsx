@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { PlusCircle, FileText, Calendar, Pencil, Trash2, Download, ChevronRight } from 'lucide-react'
+import BulletList from '@/components/BulletList'
 import { deleteEntry } from './actions'
 
 export default async function EntriesPage() {
@@ -124,17 +125,13 @@ export default async function EntriesPage() {
                     href={`/entries/${entry.id}`}
                     className="block p-4"
                   >
-                    <p className="text-sm text-slate-700 line-clamp-2 leading-relaxed">
-                      {mainLog}
-                    </p>
+                    <BulletList text={mainLog || ''} className="text-sm text-slate-700 leading-relaxed space-y-1 [&_ul]:max-h-24 [&_ul]:overflow-hidden" />
                     {entry.impact && (
                       <div className="mt-2.5 flex items-start gap-1.5">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded shrink-0 mt-px">
                           Impact
                         </span>
-                        <p className="text-xs text-emerald-700 line-clamp-1">
-                          {entry.impact}
-                        </p>
+                        <BulletList text={entry.impact} className="text-xs text-emerald-700 line-clamp-1" />
                       </div>
                     )}
                     {entry.challenges && (
@@ -142,9 +139,7 @@ export default async function EntriesPage() {
                         <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded shrink-0 mt-px">
                           Challenge
                         </span>
-                        <p className="text-xs text-amber-700 line-clamp-1">
-                          {entry.challenges}
-                        </p>
+                        <BulletList text={entry.challenges} className="text-xs text-amber-700 line-clamp-1" />
                       </div>
                     )}
                   </Link>
